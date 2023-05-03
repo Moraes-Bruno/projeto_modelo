@@ -2,6 +2,7 @@ body{
     background-image: url(../img/tianshu-liu-SBK40fdKbAg-unsplash.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 form{

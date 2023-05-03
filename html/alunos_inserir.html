@@ -1,52 +1,106 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Sistema Academico</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Sistema academico</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script>    
+    function limpa_formulário_cep() {
+            document.getElementById('rua').value=("");
+    }
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('localidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);xz
+        }
+        else {
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }        
+    function pesquisacep(valor) {
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('localidade').value="...";
+                document.getElementById('uf').value="...";
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+            }
+            else {
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } 
+        else {
+            limpa_formulário_cep();
+        }
+    }
+    </script>
 </head>
-<body class="p-4">
-    <form action="">
-        <label for="nome">Nome</label>
-        <input type="text" name="nome">
-        <br><br>
-        <label for="email">Email</label>
-        <input type="email" name="email">
-        <br><br>
-        <label for="nascimento">Data de nascimento</label>
-        <input type="date">
-        <br><br>
-        <label for="telefone">Telefone</label>
-        <input type="text" name="telefone">
-        <br><br>
-        <label for="cep">Cep</label>
-        <input type="text" name="cep">
-        <br><br>
-        <label for="endereco">Endereço</label>
-        <input type="text" name="endereco">
-        <br><br>
-        <label for="numero_casa">Numero casa</label>
-        <input type="text" name="numero_casa">
-        <br><br>
-        <label for="bairro">Bairro</label>
-        <input type="text" name="bairro">
-        <br><br>
-        <label for="cidade">Cidade</label>
-        <input type="text" name="cidade">
-        <br><br>
-        <label for="estado">Estado</label>
-        <input type="text" name="estado">
-        <br><br>
-        <label for="genero">Genero</label>
-        <span><input type="radio" value="masculino" name="masculino"> Masculino</span>
-        <span><input type="radio" value="Feminino" name="feminino"> Feminino</span>
-        <br><br>
-        <label for=""></label>
+<body>
+
+    <form method="post" class="w-50 m-auto mt-lg-4 rounded-3 p-3" action="alunos_gravar.php     ">
+
+        <h1 class="text-center">Inserir Aluno</h1>
+
+        <label for="nome" class="form-label mt-2">Nome</label>
+        <input type="text" class="form-control" name="nome" id="nome">
+
+        <label for="email" class="form-label mt-2">Email</label>
+        <input type="text" name="email" id="email" class="form-control">
+
+        <label for="telefone" class="form-label mt-2">Telefone</label>
+        <input type="text" name="telefone" id="telefone" class="form-control">
+
+        <div class="pt-3 pb-3 w-100 form-check">
+            <label for="#">Genero: </label>
+            <span><input type="radio" class="ms-2 " name="genero" id="masculino" value="masculino" checked> Masculino</span>
+            <span><input type="radio" name="genero" id="feminino" value="feminino"> Feminino</span>
+        </div>
         
+        <label for="cursos" class="form-label mt-2">Cursos</label>
+        <select name="curso" id="curso" class="form-select">
+            <option value="1-Dsm">1-Dsm</option>
+            <option value="2-Dsm">2-Dsm</option>
+            <option value="3-Dsm">3-Dsm</option>
+        </select>
+        <br>
 
+       <label for="cep" class="form-label mt-2">Cep</label>
+       <input name="cep" type="text" class="form-control" id="cep" onblur="pesquisacep(this.value);">
 
-    </form>
+       <label for="rua" class="form-label mt-2">Endereco</label>
+       <input type="text" class="form-control" name="rua" id="rua">
+
+       <label for="bairro" class="form-label mt-2">Bairro</label>
+       <input type="text" class="form-control" name="bairro" id="bairro">
+
+       <label for="localidade" class="form-label mt-2">Cidade</label>
+       <input type="text" class="form-control" name="localidade" id="localidade">
+
+       <label for="uf" class="form-label mt-2">Estado</label>
+       <input type="text" class="form-control" name="uf" id="uf">
+       <input type="submit" class="btn btn-primary w-100 mt-3"  value="Enviar">
+</form>
+<!--<a href="https://viacep.com.br/ws/13970005/json/?callback=meu_callback">Chamando JSON</a>-->
 </body>
 </html>
