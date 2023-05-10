@@ -1,3 +1,4 @@
+<?php require_once 'verifica-usuario.php'?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,9 +12,10 @@
 <body>
     <div class="d-flex flex-column  w-50 gap-4 rounded-3 m-auto mt-5 p-4 opcoes">
         <h1 class="text-center mt-2 mb-2">Sistema Academico</h1>
-        <a href="turmas_inserir.html" class="btn btn-primary w-75 m-auto d-block">Gerenciar Turmas</a>
-        <a href="disciplina_inserir.html" class="btn btn-primary w-75 m-auto d-block">Gerenciar Disciplinas</a>
+        <a href="turmas_inserir.php" class="btn btn-primary w-75 m-auto d-block">Gerenciar Turmas</a>
+        <a href="disciplina_inserir.php" class="btn btn-primary w-75 m-auto d-block">Gerenciar Disciplinas</a>
         <a href="alunos_inserir.html" class="btn btn-primary w-75 m-auto d-block">Gerenciar Alunos</a>
+        <a href="logout.php" class="btn btn-danger w-75 m-auto d-block">Sair</a>
     </div>
 </body>
 </html>

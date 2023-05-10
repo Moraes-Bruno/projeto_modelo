@@ -1,3 +1,4 @@
+<?php require_once 'verifica-usuario.php'?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
     <title>Sistema academico</title>
 </head>
 <body class="p-3 ">
@@ -12,7 +14,7 @@
 
     <h3 class=" mt-3 text-center">Nova turma</h3>
 
-    <form action="turmas_gravar.php" class=" d-flex flex-column w-50 justify-content-center align-items-center m-auto" method="post">
+    <form action="turmas_gravar.php" class=" d-flex flex-column w-50 justify-content-center align-items-center m-auto rounded-4 p-4" method="post">
 
         <label for="descTurma" class="form-label mt-3 h5">Turma</label>
         <input type="text" class="form-control w-75" name="descTurma" id="descTurma">
@@ -21,7 +23,7 @@
         <input type="number" class="form-control w-75" name="ano" id="ano">
         
         <div class="d-flex flex-row justify-content-between align-items-baseline w-75">
-            <a href="disciplina_inserir.html" class="btn btn-outline-success">Inserir Disiciplina</a>
+            <a href="home.php" class="btn btn-danger">Cancelar</a>
             <input type="submit" value="gravar" class="btn btn-primary mt-3 w-25 ">
         </div>
     </form>
