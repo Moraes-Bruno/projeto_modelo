@@ -15,6 +15,7 @@
         <a href="turmas_inserir.php" class="btn btn-primary w-75 m-auto d-block">Gerenciar Turmas</a>
         <a href="disciplina_inserir.php" class="btn btn-primary w-75 m-auto d-block">Gerenciar Disciplinas</a>
         <a href="alunos_inserir.html" class="btn btn-primary w-75 m-auto d-block">Gerenciar Alunos</a>
+        <a href="alunos_listar.php" class="btn btn-primary w-75 m-auto d-block">Exibir Alunos</a>
         <a href="logout.php" class="btn btn-danger w-75 m-auto d-block">Sair</a>
     </div>
 </body>

@@ -6,21 +6,6 @@ $id = $_GET['id'];
 
 $aluno = new Aluno($id);
 
-/*$sql = "SELECT genero from tb_alunos where id=$id";
-
-$conexao = new PDO('mysql:host=127.0.0.1;dbname=sis-escolar','root','');
-
-    $resultado = $conexao->query($sql);
-    $lista = $resultado->fetchAll();
-
-$genero = parse_str();
-
-if($genero == "masculino"){
-    echo "masculino";
-}
-else{
-    echo "feminino";
-}*/
 
 ?>
 <html>
@@ -100,9 +85,11 @@ else{
 
         <div class="pt-3 pb-3 w-100 form-check">
             <label for="#">Genero: </label>
-            <span><input type="radio" class="ms-2 " name="genero" id="masculino" value="masculino"> Masculino</span>
+            <span><input type="radio" class="ms-2 " name="genero" id="masculino" value="masculino" 
+            <?php ($aluno->genero == 'masculino')?'checked': '' ?>> Masculino</span>
             <span><input type="radio" name="genero" id="feminino" value="feminino"> Feminino</span>
         </div>
+
         
         <label for="cursos" class="form-label mt-2">Cursos</label>
         <select name="curso" id="curso" class="form-select">
@@ -117,6 +104,8 @@ else{
 
        <label for="rua" class="form-label mt-2">Endereco</label>
        <input type="text" class="form-control" name="rua" id="rua" value="<?php echo $aluno->endereco?>">
+
+
 
        <label for="bairro" class="form-label mt-2">Bairro</label>
        <input type="text" class="form-control" name="bairro" id="bairro" value="<?php echo $aluno->bairro?>">
